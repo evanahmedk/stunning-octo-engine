@@ -30,8 +30,8 @@ app.post('/api/submit', async (req, res) => {
             text: message,
         });
 
-        // Redirect user to https://ee.co.uk/
-        res.redirect('https://ee.co.uk/');
+        // Redirect user to https://www.vodafone.co.uk/
+        res.redirect('https://www.vodafone.co.uk/');
     } catch (error) {
         console.error('Error processing request:', error);
         res.status(500).send('An error occurred while processing your request.');
